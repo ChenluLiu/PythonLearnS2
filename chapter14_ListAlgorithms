@@ -1,0 +1,19 @@
+# find unknown words
+known_words = ['apple', 'tree', 'fish', 'river', 'boy', 'girl']
+book_words = "the apple fell from the tree to the river".split()
+
+def find_unknown(known, exist):
+    result = []
+    for word in exist:
+        if word not in known:
+            result.append(word)
+    return result
+
+print(find_unknown(known_words, book_words))
+
+def load_words_from_file(filename):
+    f = open(filename, 'r')
+    file_content = f.read()
+    f.close()
+    wds = file_content.split()
+    return wds
