@@ -16,7 +16,7 @@ def load_words_from_file(filename):
     file_content = f.read()
     f.close()
     lower = file_content.lower()
-    nokomma = lower.replace(',',' ')      # 去掉单词中的逗号
+    nokomma = lower.replace(',',' ')              # 去掉文本中的各类符号
     nodoc = nokomma.replace('.', ' ')
     nodoubledoc = nodoc.replace('''"''',' ')
     noquestion = nodoubledoc.replace('?', ' ')
@@ -47,4 +47,24 @@ def clean(words):
             words.remove(words[i])
         else:
             t = words[i]
+    return words
+
 print(clean(unknown_words))
+
+# binary search
+def search_binary(xs,target):
+    lb = 0
+    ub = len(xs)
+    while True:
+        if lb == ub:
+            return -1
+
+        mid_index = (lb+ub) // 2
+        item_at_mid = xs[mid_index]
+        
+        if item_at_mid == target:
+            return mid_index
+        if item_at_mid < target:
+            lb = mid_index + 1
+        else:
+            ub = mid_index
